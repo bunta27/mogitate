@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/products', [ProductsController::class, 'product']);
+Route::get('/products', [ProductsController::class, 'index'])->name('products');
+Route::get('/products/{productId}', [ProductsController::class, 'show'])->name('products.show');

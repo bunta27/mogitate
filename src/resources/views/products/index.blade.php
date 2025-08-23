@@ -11,7 +11,7 @@
 </div>
 <div class="container">
     <form class="content-search" method="get" action="{{ route('products') }}">
-        <input class="content-search_keyword-input" type="text" name="search" placeholder="商品名で検索" value="{{ $searchKeyword }}">
+        <input class="content-search_keyword-input" type="text" name="search" placeholder="商品名で検索" value="{{ $Keyword }}">
         <input class="content-search_btn" type="submit" value="検索">
         <label for="sort">価格順で表示</label>
         <select class="sort-input" name="order" >
@@ -24,8 +24,13 @@
         <ul class="card-list">
             @foreach ($products as $product)
                 <li class="card-item">
-                    <img src="" alt="" srcset="">
+                    <a href="{{ route('products.show', $product->id) }}" class="card-link">
+                        <img src="{{ $product->image }}" alt="{{ $product->name }}">
+                        <p>{{ $product->name }}</p>
+                        <p>\{{ number_format($product->price) }}</p>
+                    </a>
                 </li>
+            @endforeach
         </ul>
         <div class="filter-pager">
             {{ $products->onEachSide(1)->links('pagination') }}
