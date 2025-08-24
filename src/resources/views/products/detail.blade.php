@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-    <link rel="stylesheet" href="css/detail.css">
+    <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
 @endsection
 
 @section('content')
@@ -95,7 +95,7 @@
         </div>
     </form>
 
-    <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="delete-form {{ $errors->any() ? 'hidden' : '' }}">
+    <form action="{{ route('products.delete', $product->id) }}" method="POST" class="delete-form {{ $errors->any() ? 'hidden' : '' }}">
         @csrf
         <button type="submit" class="btn btn-danger delete-btn" title="削除">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" class="icon-trash">

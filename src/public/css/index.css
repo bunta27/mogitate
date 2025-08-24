@@ -1,0 +1,63 @@
+.content-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 16px 0;
+}
+
+.content-search {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.content-search_keyword-input {
+    flex: 1 1 240px;
+}
+
+.content-search_btn {}
+
+/* カードグリッド */
+.content-card {}
+
+.card-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.card-item {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.card-item img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.card-item p {
+    margin: 6px 0 0;
+}
+
+.filter-pager {
+    margin-top: 16px;
+}
+
+@media (max-width: 900px) {
+    .card-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .card-list {
+        grid-template-columns: 1fr;
+    }
+}

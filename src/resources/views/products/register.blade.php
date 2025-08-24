@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/resister.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
 @endsection
 
 @section('content')
@@ -39,7 +39,7 @@
                 <span class="required-mark">必須</span>
             </label>
             <input type="file" name="image" accept=".png,.jpg,.jpeg" onchange="previewImage(this)">
-            @error('price')
+            @error('image')
                 <div class="error-text">
                     {{ $message }}
                 </div>
@@ -59,7 +59,7 @@
                 </label>
             @endforeach
 
-            @error('price')
+            @error('seasons')
                 <div class="error-text">
                     {{ $message }}
                 </div>
@@ -70,9 +70,7 @@
             <label class="label">商品説明
                 <span class="req">必須</span>
             </label>
-            <textarea name="description" class="form-control" placeholder="商品の説明を入力">
-                {{ old('description') }}
-            </textarea>
+            <textarea name="description" class="form-control" placeholder="商品の説明を入力">{{ old('description') }}</textarea>
             @error('description')
                 <div class="error-text">
                     {{ $message }}
@@ -93,7 +91,7 @@
         if (input.files && input.files[0]) {
             const reader = new FileReader();
             reader.onload = e => { img.src = e.target.result; img.style.display = 'block'; };
-            reader.readAsDataURL(input.file[0]);
+            reader.readAsDataURL(input.files[0]);
         } else {
             img.src = ''; img.style.display = 'none';
         }

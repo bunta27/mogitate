@@ -1,0 +1,51 @@
+.detail-container {}
+
+.detail-flex {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.detail-left,
+.detail-right {
+    flex: 1;
+}
+
+.detail-container .img-preview {
+    max-width: 420px;
+}
+
+.description-field {
+    margin-top: 8px;
+}
+
+.delete-form {
+    margin-top: 12px;
+    text-align: right;
+}
+
+.icon-trash {
+    width: 28px;
+    height: 28px;
+    stroke: #e11d48;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    padding: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.delete-btn:hover .icon-trash {
+    stroke: #b91c1c;
+}
+
+@media (max-width: 800px) {
+    .detail-flex {
+        flex-direction: column;
+    }
+}

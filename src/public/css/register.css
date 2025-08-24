@@ -1,0 +1,14 @@
+.register-container {}
+
+.register-title {
+    font-size: 28px;
+    margin: 8px 0 20px;
+}
+
+.register-container .img-preview {
+    max-width: 420px;
+}
+
+.register-container .actions {
+    justify-content: flex-start;
+}

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/products.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 @endsection
 
 @section('content')
@@ -12,7 +12,7 @@
     </a>
 </div>
 <div class="container">
-    <form class="content-search" method="get" action="{{ route('products.search') }}">
+    <form class="content-search" method="get" action="{{ route('products') }}">
         <input class="content-search_keyword-input" type="text" name="search" placeholder="商品名で検索" value="{{ $keyword }}">
 
         <input class="content-search_btn" type="submit" value="検索">
@@ -28,7 +28,7 @@
         <div class="filter-tags">
             <span class="tag-pill">
                 {{ $sortOrder === 'price_desc' ? '高い順に表示' : '低い順に表示' }}
-                <a href="{{ route('products', array_merge(request()->except('order'), ['page' => 1])) }}" class="tag-close">x</a>
+                <a href="{{ route('products', array_merge(request()->except('order'), ['page' => 1])) }}" class="tag-close">×</a>
             </span>
         </div>
     @endif
@@ -38,7 +38,7 @@
             @foreach ($products as $product)
                 <li class="card-item">
                     <a href="{{ route('products.detail', $product->id) }}" class="card-link">
-                        <img src="{{ $product->image }}" alt="{{ $product->name }}">
+                        <img src="{{ $product->image }}" alt="{{ $product->name }}" loading="lazy">
                         <p>{{ $product->name }}</p>
                         <p>&#165;{{ number_format($product->price) }}</p>
                     </a>
@@ -50,3 +50,4 @@
         </div>
     </section>
 </div>
+@endsection
