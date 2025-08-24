@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Season;
+use App\Http\Requests\UpdateProductRequest;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\Storage;
 
@@ -39,8 +40,48 @@ class ProductsController extends Controller
 
     public function show($productId)
     {
+        $product = Product::with('seasons:id')->findOrFail($productId);
+        $seasons = Season::all();
+        return view('products.detail', compact('product','seasons'));
+    }
+
+    public function update(UpdateProductRequest $request, $productId)
+    {
+        $product   = Product::findOrFail($productId);
+        $validated = $request->validated();
+
+        if ($request->hasFile('image')) {
+            if ($product->image && str_starts_with($product->image, '/storage/')) {
+                $old = str_replace('/storage/', '', $product->image);
+                Storage::disk('public')->delete($old);
+            }
+            $path = $request->file('image')->store('products', 'public');
+            $product->image = Storage::url($path);
+        }
+
+        $product->name        = $validated['name'];
+        $product->price       = $validated['price'];
+        $product->description = $validated['description'];
+        $product->save();
+
+        $product->seasons()->sync($validated['seasons']);
+
+        return redirect()->route('products')->with('status', '商品を更新しました');
+    }
+
+    public function destroy($productId)
+    {
         $product = Product::findOrFail($productId);
-        return view('products.detail', compact('product'));
+
+        if ($product->image && str_starts_with($product->image, '/storage/')) {
+            $old = str_replace('/storage/', '', $product->image);
+            Storage::disk('public')->delete($old);
+        }
+
+        $product->seasons()->detach();
+        $product->delete();
+
+        return redirect()->route('products')->with('status', '商品を削除しました');
     }
 
     public function create()

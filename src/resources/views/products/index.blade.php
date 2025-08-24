@@ -12,7 +12,7 @@
     </a>
 </div>
 <div class="container">
-    <form class="content-search" method="get" action="{{ route('products') }}">
+    <form class="content-search" method="get" action="{{ route('products.search') }}">
         <input class="content-search_keyword-input" type="text" name="search" placeholder="商品名で検索" value="{{ $keyword }}">
 
         <input class="content-search_btn" type="submit" value="検索">
