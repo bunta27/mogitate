@@ -4,7 +4,7 @@
         @if ($paginator->onFirstPage())
             <li class="disabled"><span aria-hidden="true"><</span></li>
         @else
-            <li><a href="{{ $paginator->previousPagerUrl() }}" rel="prev" aria-label="@lang('previous')"><</a></li>
+            <li><a href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('previous')"><</a></li>
         @endif
 
         @foreach ($elements as $element)
