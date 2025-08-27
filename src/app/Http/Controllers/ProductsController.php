@@ -15,11 +15,11 @@ class ProductsController extends Controller
     {
         $keyword = $request->input('search');
 
-        $sortOrder = $request->input('order');
+        $sortOrder = trim((string)$request->input('order'));
 
         $query = Product::query();
 
-        if (!empty($keyword)) {
+        if ($keyword !== null && $keyword !== '') {
             $query->where('name', 'like', "%{$keyword}%");
         }
 

@@ -17,21 +17,24 @@
 
         <input class="content-search_btn" type="submit" value="検索">
 
-        <label for="sort">価格順で表示</label>
-        <select class="sort-input" name="order" onchange="this.form.submit()">
-            <option value="" {{ empty($sortOrder) ? 'selected' : '' }}>価格で並び替え</option>
-            <option value="price_desc" @selected($sortOrder === 'price_desc')>高い順に表示</option>
-            <option value="price_asc" @selected($sortOrder === 'price_asc')>低い順に表示</option>
+        @php $currentOrder = old('order', $sortOrder); @endphp
+
+        <label for="sort" class="sort-title">価格順で表示</label>
+        <select id="sort" class="sort-input" name="order" onchange="this.form.submit()">
+            <option value="" disabled {{ $currentOrder ? '' : 'selected' }}>価格で並び替え</option>
+            <option value="price_desc" {{ $currentOrder === 'price_desc' ? 'selected' : '' }}>高い順に表示</option>
+            <option value="price_asc"  {{ $currentOrder === 'price_asc'  ? 'selected' : '' }}>低い順に表示</option>
         </select>
+
+        @if ($currentOrder)
+            <div class="filter-tags">
+                <span class="tag-pill">
+                    {{ $currentOrder === 'price_desc' ? '高い順に表示' : '低い順に表示' }}
+                    <a href="{{ route('products', array_merge(request()->except('order'), ['page' => 1])) }}" class="tag-close">×</a>
+                </span>
+            </div>
+        @endif
     </form>
-    @if (!empty($sortOrder))
-        <div class="filter-tags">
-            <span class="tag-pill">
-                {{ $sortOrder === 'price_desc' ? '高い順に表示' : '低い順に表示' }}
-                <a href="{{ route('products', array_merge(request()->except('order'), ['page' => 1])) }}" class="tag-close">×</a>
-            </span>
-        </div>
-    @endif
 
     <section class="content-card">
         <ul class="card-list">
@@ -39,8 +42,10 @@
                 <li class="card-item">
                     <a href="{{ route('products.detail', $product->id) }}" class="card-link">
                         <img src="{{ $product->image }}" alt="{{ $product->name }}" loading="lazy">
-                        <p>{{ $product->name }}</p>
-                        <p>&#165;{{ number_format($product->price) }}</p>
+                        <div class="card-info">
+                            <span class="card-name">{{ $product->name }}</span>
+                            <span class="card-price">￥{{ number_format($product->price) }}</span>
+                        </div>
                     </a>
                 </li>
             @endforeach
@@ -50,4 +55,15 @@
         </div>
     </section>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const select = document.getElementById('sort');
+    if (!select) return;
+    const update = () => select.classList.toggle('is-placeholder', !select.value);
+    select.addEventListener('change', update);
+    update();
+});
+</script>
+
 @endsection

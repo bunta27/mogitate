@@ -1,9 +1,46 @@
-.register-container {}
+.register-container {
+    max-width: 1520px;
+    color: #333;
+    background: #f8f8f8;
+    margin: 0 auto;
+    padding: 30px 300px;
+}
 
 .register-title {
-    font-size: 28px;
-    margin: 8px 0 20px;
+    font-size: 32px;
+    color: #333;
 }
+
+.field {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.field input {
+    border: #E0DFDE 1px solid;
+    border-radius: 5px;
+    padding: 11px 10px;
+    color: #333;
+}
+
+.field input::placeholder {
+    color: #E0DFDE;
+}
+
+.label {
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.label .required-mark {
+    color: white;
+    background-color: red;
+    padding: 0 5px;
+    font-size: .85rem;
+}
+
+
 
 .register-container .img-preview {
     max-width: 420px;
