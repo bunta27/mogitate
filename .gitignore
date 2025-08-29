@@ -1,0 +1,5 @@
+
+# Ignore runtime data
+docker/mysql/data/
+# Optional
+.drawio/
