@@ -1,8 +1,8 @@
-# お問い合わせフォーム
+# もぎたて
 
 ## 環境構築
 1. リポジトリ取得
-- git clone [git@github.com:bunta27/mogitate.git]
+- git clone [git@github.com:bunta27/mogitate.git](https://github.com/bunta27/mogitate.git)
 - cd ~/coachtech/laravel/mogitate
 
 2. .env 作成
@@ -36,10 +36,10 @@ MySQL が起動しない場合は OS によって設定が必要になること�
 - Laravel 8.83.8
 - MySQL 8.0.26
 - Nginx 1.21.1
-- Docker 28.3.0/ Docker Compose v2.38.1
+- Docker 28.3.2/ Docker Compose v2.39.1
 
 ## ER 図
-<img src="docs/er.svg" alt="ER図" width="700">
+![ER図](docs/er-diagram.png)
 
 ## URL
 - 開発環境: http://localhost/
