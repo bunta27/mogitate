@@ -39,7 +39,7 @@ MySQL が起動しない場合は OS によって設定が必要になること�
 - Docker 28.3.2/ Docker Compose v2.39.1
 
 ## ER 図
-![ER図](docs/er-diagram.png)
+![ER図](./er-diagram.png)
 
 ## URL
 - 開発環境: http://localhost/
