@@ -1,22 +1,4 @@
-/node_modules
-/public/hot
-/public/storage
-/storage/*.key
-/vendor
-.env
-.env.backup
-.phpunit.result.cache
-docker-compose.override.yml
-Homestead.json
-Homestead.yaml
-npm-debug.log
-yarn-error.log
-/.idea
-/.vscode
-/storage/*
-!/storage/app
-/storage/app/*
-!/storage/app/public/**
-docker/mysql/data/
-.drawio/
-/.DS_Store
+cat > src/.gitignore <<'EOF'
+*
+!.gitignore
+EOF
