@@ -1,51 +1,197 @@
-.detail-container {}
-
-.detail-flex {
+main {
     display: flex;
-    gap: 24px;
-    align-items: flex-start;
+    justify-content: center;
+    padding: 20px;
 }
 
-.detail-left,
-.detail-right {
+.detail-container {
+    max-width: 1520px;
+    color: #333;
+    background: #f8f8f8;
+    margin: 0 auto;
+}
+
+.detail-container p a {
+    color: #0085FF;
+    text-decoration: none;
+}
+
+.detail-flex {
+    width: 800px;
+    display: flex;
+    gap: 10px;
+}
+
+.detail-left .img-preview {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.file-field input[type="file"] {
+    background-color: #E0DFDE;
+    color: #4b4b4b;
+    padding: 5px 10px;
+    margin-right: 10px;
+}
+
+.detail-right .field{
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-bottom: 30px;
+}
+
+.label {
+    margin-bottom: 10px;
+    display: inline-flex;
+    gap: 10px;
+}
+
+.form-control {
+    width: 396px;
+    border: #E0DFDE 1px solid;
+    border-radius: 5px;
+    padding: 11px 10px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.form-control::placeholder {
+    color: #E0DFDE;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.season-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 4.5px;
+    gap: 50px;
+}
+
+.season-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.season-option input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.season-check {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #4b4b4b;
+    border-radius: 50%;
+    background-color: white;
+    box-sizing: border-box;
+    transition: all .15s ease;
+    position: relative;
+}
+
+.season-option input:checked+.season-check {
+    background: #4b4b4b;
+    border-color: #4b4b4b;
+}
+
+.season-option input:checked+.season-check::after {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    font-size: 14px;
+    color: white;
+}
+
+.description-field .label{
+    display: block;
+    margin-bottom: 10px;
+}
+
+.description-field .form-control {
+    width: 800px;
+    height: 160px;
+    resize: none;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+}
+
+.actions-center {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
     flex: 1;
 }
 
-.detail-container .img-preview {
-    max-width: 420px;
-}
-
-.description-field {
-    margin-top: 8px;
-}
-
-.delete-form {
-    margin-top: 12px;
-    text-align: right;
-}
-
-.icon-trash {
-    width: 28px;
-    height: 28px;
-    stroke: #e11d48;
-}
-
-.delete-btn {
-    background: none;
-    border: none;
-    padding: 4px;
+.button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    width: 200px;
+    height: 50px;
+    font-weight: bold;
+    color: #4b4b4b;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
     cursor: pointer;
 }
-
-.delete-btn:hover .icon-trash {
-    stroke: #b91c1c;
+.btn-secondary {
+    background-color: #E0DFDE;
 }
 
-@media (max-width: 800px) {
-    .detail-flex {
-        flex-direction: column;
-    }
+.update-btn {
+    background-color: #F5C800;
+}
+
+.inline-form {
+    margin: 0;
+}
+
+.delete-btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 8px;
+    cursor: pointer;
+    color: red;
+    box-shadow: none;
+    stroke-width: 2;
+}
+
+.icon-trash {
+    width: 32px;
+    height: 32px;
+    color: red;
+    border: none;
+    background-color: transparent;
+    stroke-width: 2;
+}
+
+.error-text {
+    color: red;
 }

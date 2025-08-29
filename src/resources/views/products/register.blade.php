@@ -38,7 +38,10 @@
             <label class="label">商品画像
                 <span class="required-mark">必須</span>
             </label>
-            <input type="file" name="image" accept=".png,.jpg,.jpeg" onchange="previewImage(this)">
+            <div class="file-field">
+                <input id="image" type="file" name="image" accept=".png,.jpg,.jpeg" class="file-input" onchange="handleImageChange(this)">
+                <label for="image" class="file-label">ファイルを選択</label>
+            </div>
             @error('image')
                 <div class="error-text">
                     {{ $message }}
@@ -50,14 +53,17 @@
         <div class="field">
             <label class="label">季節
                 <span class="required-mark">必須</span>
+                <span class="label-help">複数選択可</span>
             </label>
-
-            @foreach(($seasons ?? []) as $season)
-                <label class="season-option">
-                    <input type="checkbox" name="seasons[]" value="{{ $season->id }}" {{ in_array($season->id, old('seasons', [])) ? 'checked' : '' }}>
-                    {{ $season->name }}
-                </label>
-            @endforeach
+            <div class="season-list">
+                @foreach(($seasons ?? []) as $season)
+                    <label class="season-option">
+                        <input type="checkbox" name="seasons[]" value="{{ $season->id }}" {{ in_array($season->id, old('seasons', [])) ? 'checked' : '' }}>
+                        <span class="season-check" aria-hidden="true"></span>
+                        <span class="season-text">{{ $season->name }}</span>
+                    </label>
+                @endforeach
+            </div>
 
             @error('seasons')
                 <div class="error-text">
@@ -68,7 +74,7 @@
 
         <div class="field">
             <label class="label">商品説明
-                <span class="req">必須</span>
+                <span class="required-mark">必須</span>
             </label>
             <textarea name="description" class="form-control" placeholder="商品の説明を入力">{{ old('description') }}</textarea>
             @error('description')
