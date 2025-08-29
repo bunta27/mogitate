@@ -90,6 +90,33 @@
     margin-top: 20px;
 }
 
+.filter-tags {
+    margin-top: 10px 0;
+}
+
+.tag-pill {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #F5C800;
+    border-radius: 25px;
+    padding: 10px;
+    color: #4b4b4b;
+}
+
+.tag-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    margin-left: 10px;
+    border: 1px solid #F5C800;
+    border-radius: 50%;
+    line-height: 1;
+    color: #F5C800;
+    text-decoration: none;
+}
+
 .card-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
