@@ -7,21 +7,15 @@
             <li><a href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('previous')"><</a></li>
         @endif
 
-        @foreach ($elements as $element)
-            @if (is_string($element))
-                <li class="disabled"><span>{{ $element }}</span></li>
+        @for ($page = 1; $page <= 3; $page++)
+            @if ($page == $paginator->currentPage())
+                <li class="active"><span>{{ $page }}</span></li>
+            @elseif ($page > $paginator->lastPage())
+                <li class="disabled"><span>{{ $page }}</span></li>
+            @else
+                <li><a href="{{ $paginator->url($page) }}">{{ $page }}</a></li>
             @endif
-
-            @if (is_array($element))
-                @foreach ($element as $page => $url)
-                    @if ($page == $paginator->currentPage())
-                        <li class="active" aria-current="page"><span>{{ $page }}</span></li>
-                    @else
-                        <li><a href="{{ $url }}">{{ $page }}</a></li>
-                    @endif
-                @endforeach
-            @endif
-        @endforeach
+        @endfor
 
         @if ($paginator->hasMorePages())
             <li><a href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('next')">></a></li>
