@@ -5,7 +5,7 @@ main {
 }
 
 .detail-container {
-    max-width: 1520px;
+    width: 800px;
     color: #333;
     background: #f8f8f8;
     margin: 0 auto;
