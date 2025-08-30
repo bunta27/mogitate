@@ -18,6 +18,7 @@
     text-decoration: none;
     font-weight: bold;
     box-shadow: 0 4px 10px rbga(0,0,0,0.1);
+    margin-right: 40px;
 }
 
 .content-title .btn-register:hover {
