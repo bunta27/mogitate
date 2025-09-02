@@ -86,7 +86,7 @@
     <div class="actions">
         <div class="actions-center">
             <a href="{{ route('products') }}" class="button btn-secondary">戻る</a>
-            <button type="submit" class="button update-btn">変更を保存</button>
+            <button type="submit" class="button update-btn" form="productUpdateForm">変更を保存</button>
         </div>
 
         <form action="{{ route('products.delete', $product->id) }}" method="POST" class="inline-form {{ $errors->any() ? 'hidden' : '' }}" onsubmit="return confirm('本当に削除しますか？')">
