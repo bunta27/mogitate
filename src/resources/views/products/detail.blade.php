@@ -41,7 +41,7 @@
 
                 <div class="field">
                     <label class="label">値段</label>
-                    <input type="number" name="price" class="form-control" value="{{ old('price', $product->price) }}">
+                    <input type="text" name="price" class="form-control" value="{{ old('price', $product->price) }}">
                     @error('price')
                         <div class="error-text">
                             {{ $message }}
